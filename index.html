@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Estrategia de Campaña de Marketing - Palenque</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+  
+  <style>
+    /* VARIABLES DE COLOR Y ESTILOS NATIVOS PALENQUE */
+    :root {
+      --cafe-light: #F5EBE6;
+      --cafe-base: #D9C4B5;
+      --cafe-dark: #8C6D58;
+      --vino-light: #8A2638;
+      --vino-base: #5C1321;
+      --vino-dark: #380912;
+      --gold: #C5A059;
+      --bg-body: #F8F4F0;
+      --text-dark: #2D2522;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-body);
+      color: var(--text-dark);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* HEADER */
+    header {
+      background-color: var(--vino-base);
+      color: white;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      border-bottom: 1px solid rgba(197, 160, 89, 0.3);
+    }
+    .header-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .logo-box {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .logo-avatar {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background-color: var(--cafe-light);
+      color: var(--vino-base);
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+    .brand-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: var(--cafe-light);
+    }
+    .brand-subtitle {
+      font-size: 0.7rem;
+      color: var(--cafe-base);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+    }
+    .badge-academic {
+      background-color: var(--vino-dark);
+      border: 1px solid rgba(197, 160, 89, 0.4);
+      padding: 0.4rem 1rem;
+      border-radius: 50px;
+      font-size: 0.75rem;
+      color: var(--cafe-light);
+      font-weight: 600;
+    }
+
+    /* MAIN CONTAINER */
+    main {
+      flex-grow: 1;
+      max-width: 1200px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    /* HERO BANNER */
+    .hero-banner {
+      background: linear-gradient(135deg, var(--vino-dark), var(--vino-base), var(--vino-dark));
+      border-radius: 16px;
+      padding: 2rem;
+      color: white;
+      box-shadow: 0 10px 25px rgba(92, 19, 33, 0.25);
+      border: 1px solid rgba(197, 160, 89, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-tag {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      background-color: rgba(197, 160, 89, 0.2);
+      border: 1px solid rgba(197, 160, 89, 0.4);
+      color: var(--cafe-light);
+      font-size: 0.75rem;
+      font-weight: 600;
+      border-radius: 50px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 0.75rem;
+    }
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: bold;
+      color: var(--cafe-light);
+      line-height: 1.2;
+      margin-bottom: 0.75rem;
+    }
+    .hero-desc {
+      color: var(--cafe-base);
+      font-size: 0.95rem;
+      line-height: 1.6;
+      max-width: 800px;
+    }
+
+    /* CONTROLS & FILTER BAR */
+    .controls-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      border-bottom: 1px solid rgba(140, 109, 88, 0.2);
+      padding-bottom: 1rem;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-weight: bold;
+      color: var(--vino-base);
+    }
+    .section-desc {
+      font-size: 0.8rem;
+      color: #666;
+    }
+    .filter-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .filter-btn {
+      padding: 0.4rem 0.8rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      background-color: rgba(217, 196, 181, 0.4);
+      color: var(--vino-dark);
+    }
+    .filter-btn:hover {
+      background-color: var(--cafe-base);
+    }
+    .filter-btn.active {
+      background-color: var(--vino-base);
+      color: white;
+    }
+
+    /* GRID LAYOUT */
+    .campaign-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      align-items: start;
+    }
+    @media (min-width: 992px) {
+      .campaign-grid {
+        grid-template-columns: 1.8fr 1.2fr;
+      }
+    }
+
+    /* CARDS */
+    .cards-container {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    .week-card {
+      background: white;
+      border-radius: 16px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+      border: 1px solid rgba(217, 196, 181, 0.5);
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(217, 196, 181, 0.3);
+      padding-bottom: 0.75rem;
+    }
+    .phase-badge {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--vino-light);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .week-badge {
+      background-color: var(--vino-base);
+      color: white;
+      padding: 0.25rem 0.75rem;
+      border-radius: 50px;
+      font-size: 0.75rem;
+      font-weight: bold;
+    }
+    .card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-weight: bold;
+      color: var(--vino-dark);
+      margin-bottom: 0.25rem;
+    }
+    .card-objective {
+      font-size: 0.8rem;
+      color: #555;
+    }
+    .card-meta-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.75rem;
+    }
+    @media (min-width: 576px) {
+      .card-meta-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+    .meta-box {
+      background-color: rgba(245, 235, 230, 0.6);
+      padding: 0.75rem;
+      border-radius: 10px;
+      border: 1px solid rgba(217, 196, 181, 0.4);
+      font-size: 0.75rem;
+    }
+    .meta-box strong {
+      color: var(--vino-dark);
+      display: block;
+      margin-bottom: 0.2rem;
+    }
+    .script-box {
+      background-color: rgba(245, 235, 230, 0.4);
+      padding: 1rem;
+      border-radius: 12px;
+      border: 1px solid rgba(217, 196, 181, 0.5);
+      font-size: 0.8rem;
+    }
+    .script-title {
+      font-weight: bold;
+      text-transform: uppercase;
+      color: var(--vino-dark);
+      font-size: 0.7rem;
+      letter-spacing: 0.5px;
+      margin-bottom: 0.4rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .script-text {
+      font-style: italic;
+      color: #333;
+      line-height: 1.5;
+    }
+
+    /* CTA BLOCK */
+    .cta-block {
+      background-color: var(--vino-base);
+      color: white;
+      padding: 1rem;
+      border-radius: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      border: 1px solid rgba(197, 160, 89, 0.3);
+    }
+    .cta-label {
+      font-size: 0.65rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      color: var(--gold);
+      letter-spacing: 1px;
+      display: block;
+    }
+    .cta-text {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--cafe-light);
+    }
+    .preview-btn {
+      background-color: var(--gold);
+      color: var(--vino-dark);
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      font-size: 0.75rem;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: background 0.2s ease;
+      white-space: nowrap;
+    }
+    .preview-btn:hover {
+      background-color: #b38e46;
+    }
+
+    .kpi-footer {
+      font-size: 0.75rem;
+      color: #777;
+      padding-top: 0.5rem;
+      border-top: 1px solid rgba(217, 196, 181, 0.2);
+    }
+
+    /* PHONE PREVIEW (STICKY) */
+    .sticky-side {
+      position: relative;
+    }
+    @media (min-width: 992px) {
+      .sticky-side {
+        position: sticky;
+        top: 90px;
+      }
+    }
+    .phone-card {
+      background: white;
+      border-radius: 16px;
+      padding: 1.25rem;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+      border: 1px solid rgba(217, 196, 181, 0.5);
+      text-align: center;
+    }
+    .phone-card-title {
+      font-family: 'Playfair Display', serif;
+      font-weight: bold;
+      color: var(--vino-base);
+      font-size: 1.1rem;
+    }
+    .phone-card-subtitle {
+      font-size: 0.75rem;
+      color: #777;
+      margin-bottom: 1rem;
+    }
+
+    /* PHONE MOCKUP */
+    .phone-mockup {
+      width: 100%;
+      max-width: 270px;
+      margin: 0 auto;
+      background: #000;
+      border-radius: 36px;
+      padding: 8px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+      border: 4px solid var(--cafe-dark);
+    }
+    .phone-screen {
+      position: relative;
+      background-color: var(--vino-dark);
+      border-radius: 28px;
+      overflow: hidden;
+      aspect-ratio: 9 / 16;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 1rem;
+      color: white;
+      text-align: left;
+    }
+    .reel-bg-img {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      opacity: 0.5;
+      transition: all 0.5s ease;
+    }
+    .reel-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.5), transparent 40%, rgba(0,0,0,0.9));
+    }
+    .phone-top-bar {
+      position: relative;
+      z-index: 10;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.65rem;
+      font-weight: 600;
+    }
+    .live-dot {
+      width: 6px;
+      height: 6px;
+      background-color: #ef4444;
+      border-radius: 50%;
+      display: inline-block;
+    }
+    .week-tag-preview {
+      background: rgba(0,0,0,0.6);
+      padding: 2px 8px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.2);
+      color: var(--gold);
+      font-weight: bold;
+    }
+
+    /* REEL SIDE ICONS */
+    .side-icons {
+      position: absolute;
+      right: 12px;
+      bottom: 90px;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+    .icon-btn {
+      width: 32px;
+      height: 32px;
+      background: rgba(0,0,0,0.4);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+    }
+
+    /* REEL CONTENT OVERLAY */
+    .phone-bottom-content {
+      position: relative;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .user-row {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .user-avatar {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: var(--cafe-light);
+      color: var(--vino-base);
+      font-weight: bold;
+      font-family: 'Playfair Display', serif;
+      font-size: 0.7rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--gold);
+    }
+    .user-name {
+      font-size: 0.75rem;
+      font-weight: bold;
+    }
+    .preview-title {
+      font-size: 0.75rem;
+      font-weight: bold;
+      color: var(--cafe-light);
+    }
+    .preview-script {
+      font-size: 0.65rem;
+      color: #ddd;
+      font-style: italic;
+      display: -webkit-box;
+      display: box;
+      -webkit-line-clamp: 3;
+      line-clamp: 3;
+      -webkit-box-orient: vertical;
+      box-orient: vertical;
+      overflow: hidden;
+    }
+    .preview-cta-box {
+      background: var(--vino-light);
+      color: white;
+      padding: 0.5rem;
+      border-radius: 8px;
+      font-size: 0.65rem;
+      font-weight: bold;
+      border: 1px solid rgba(197, 160, 89, 0.4);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    /* FOOTER */
+    footer {
+      background-color: var(--vino-dark);
+      color: var(--cafe-base);
+      font-size: 0.75rem;
+      padding: 1.5rem;
+      border-top: 1px solid rgba(197, 160, 89, 0.2);
+      margin-top: auto;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="header-container">
+      <div class="logo-box">
+        <div class="logo-avatar">P</div>
+        <div>
+          <h1 class="brand-title">PALENQUE</h1>
+          <p class="brand-subtitle">Café de Especialidad & Coworking • Cali, Colombia</p>
+        </div>
+      </div>
+      <div class="badge-academic">
+        🎓 Plan 5 Semanas campaña de marketing
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main>
+    
+    <!-- Presentation Hero Header -->
+    <section class="hero-banner">
+      <span class="hero-tag">Estrategia Digital de Redes Sociales</span>
+      <h2 class="hero-title">Campaña: "Tu Nuevo Espacio para Crear y Disfrutar en Cali"</h2>
+      <p class="hero-desc">
+        Propuesta estratégica de marketing digital de 5 semanas diseñada para posicionar a <strong>Palenque</strong> como el lugar ideal en Cali para combinar café de alta calidad, productividad en coworking y momentos de esparcimiento.
+      </p>
+    </section>
+
+    <!-- Content Controls -->
+    <div class="controls-bar">
+      <div>
+        <h3 class="section-title">Estructura de la Campaña</h3>
+        <p class="section-desc">Selecciona una semana o navega entre las tarjetas para revisar el guion y prototipo de Reel.</p>
+      </div>
+
+      <!-- Quick Filter Buttons -->
+      <div class="filter-group">
+        <button onclick="filterWeek('all')" id="filter-btn-all" class="filter-btn active">Todas</button>
+        <button onclick="filterWeek(1)" id="filter-btn-1" class="filter-btn">Semana 1</button>
+        <button onclick="filterWeek(2)" id="filter-btn-2" class="filter-btn">Semana 2</button>
+        <button onclick="filterWeek(3)" id="filter-btn-3" class="filter-btn">Semana 3</button>
+        <button onclick="filterWeek(4)" id="filter-btn-4" class="filter-btn">Semana 4</button>
+        <button onclick="filterWeek(5)" id="filter-btn-5" class="filter-btn">Semana 5</button>
+      </div>
+    </div>
+
+    <!-- Main Layout: Cards & Phone Preview -->
+    <div class="campaign-grid">
+      
+      <!-- Week Cards List -->
+      <div class="cards-container" id="weeks-list-container">
+        <!-- Dynamic Cards rendered via JS -->
+      </div>
+
+      <!-- Reel Interactive Phone Showcase (Sticky Column) -->
+      <div class="sticky-side">
+        <div class="phone-card">
+          <h4 class="phone-card-title">Visualizador de Prototipo Reel</h4>
+          <p class="phone-card-subtitle">Muestra en tiempo real el formato final para redes sociales.</p>
+
+          <!-- Phone Mockup Container -->
+          <div class="phone-mockup">
+            <div class="phone-screen">
+              
+              <!-- Background Image -->
+              <div id="reel-bg" class="reel-bg-img"></div>
+              <div class="reel-overlay"></div>
+
+              <!-- Top Bar -->
+              <div class="phone-top-bar">
+                <div style="display: flex; align-items: center; gap: 4px;">
+                  <span class="live-dot"></span>
+                  <span>Palenque Reel</span>
+                </div>
+                <span id="preview-week-tag" class="week-tag-preview">Semana 1</span>
+              </div>
+
+              <!-- Side Actions Simulation -->
+              <div class="side-icons">
+                <div style="text-align: center;">
+                  <div class="icon-btn" style="color: #ef4444;"><i class="fa-solid fa-heart"></i></div>
+                  <span id="reel-likes" style="font-size: 8px;">1.4k</span>
+                </div>
+                <div style="text-align: center;">
+                  <div class="icon-btn"><i class="fa-solid fa-comment"></i></div>
+                  <span id="reel-comments" style="font-size: 8px;">92</span>
+                </div>
+                <div class="icon-btn"><i class="fa-solid fa-bookmark"></i></div>
+              </div>
+
+              <!-- Bottom Text & CTA -->
+              <div class="phone-bottom-content">
+                <div class="user-row">
+                  <div class="user-avatar">P</div>
+                  <span class="user-name">palenque.cali</span>
+                </div>
+
+                <div>
+                  <p id="reel-title-preview" class="preview-title"></p>
+                  <p id="reel-script-preview" class="preview-script"></p>
+                </div>
+
+                <div class="preview-cta-box">
+                  <span id="reel-cta-preview" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"></span>
+                  <i class="fa-solid fa-paper-plane" style="color: var(--gold);"></i>
+                </div>
+              </div>
+
+            </div>
+          </div>
+          
+          <p style="font-size: 0.7rem; color: #777; font-style: italic; margin-top: 0.75rem;">
+            Haz clic en "Ver Prototipo" en cualquier tarjeta para actualizar la pantalla.
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p style="font-family: 'Playfair Display', serif; font-weight: 600; color: var(--cafe-light); margin-bottom: 0.3rem;">
+      PALENQUE &copy; 2026 - Estrategia de Marketing Digital
+    </p>
+    <p style="color: var(--cafe-dark);">
+      Paleta Corporativa: Café con Leche (#F5EBE6 / #8C6D58) & Rojo Vino Tinto (#5C1321 / #8A2638)
+    </p>
+  </footer>
+
+  <!-- JavaScript Logic -->
+  <script>
+    // DATA COMPLETA DE LAS 5 SEMANAS DE CAMPAÑA PARA PALENQUE CALI
+    const campaignData = [
+      {
+        week: 1,
+        phase: "Etapa 1: Expectativa & Descubrimiento",
+        title: "¿El mejor café para trabajar en Cali?",
+        objective: "Posicionar la doble propuesta de valor: Café de especialidad de origen + Espacio de Coworking para teletrabajo.",
+        format: "Reel Teaser Aesthetic (15s)",
+        bgImage: "https://images.unsplash.com/photo-1527192491265-7e15c55b1ed2?auto=format&fit=crop&w=600&q=80",
+        audio: "Sonido Lofi Chillhop suave + ambiente real de cafetería",
+        reelScript: "Cortes rápidos y estéticos: café de especialidad cayendo en filtrado, laptop encendiéndose en mesa de madera, enchufes a la mano, luz natural. Texto en pantalla: '¿Cansado de trabajar en casa o en cafés sin buen Wi-Fi en Cali? Descubre Palenque'.",
+        cta: "Comenta 'COWORKING' y te enviamos la ubicación + un pase de prueba por DM.",
+        kpi: "Alcance total e interacciones en Cali (Comentarios)."
+      },
+      {
+        week: 2,
+        phase: "Etapa 2: Conexión & Estilo de Vida",
+        title: "POV: Un día de teletrabajo en Palenque",
+        objective: "Mostrar la experiencia de usuario real de un freelancer o profesional remoto durante una jornada completa.",
+        format: "Reel POV / Day in the Life (25s)",
+        bgImage: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=600&q=80",
+        audio: "Voz en off cercana en español caleño + música de fondo motivacional",
+        reelScript: "Llegando a Palenque a las 9 AM. '1. Wi-Fi de alta velocidad sin interrupciones ⚡. 2. Cappuccino con café de origen ☕. 3. Sillas ergonómicas y excelente iluminación 🥐'. Finaliza cerrando la laptop satisfecho.",
+        cta: "Guarda este Reel para guardarlo en tus planes de la semana en Cali.",
+        kpi: "Guardados y Compartidos en Instagram/TikTok."
+      },
+      {
+        week: 3,
+        phase: "Etapa 3: Prueba Social & Comunidad",
+        title: "Creativos y Emprendedores en Cali hablen de Palenque",
+        objective: "Generar confianza y validación a través de testimonios reales de clientes trabajando e interactuando.",
+        format: "Reel UGC / Entrevistas Flash (20s)",
+        bgImage: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=600&q=80",
+        audio: "Música en tendencia + voces reales de clientes",
+        reelScript: "Pregunta rápida a clientes sentados en la zona coworking: '¿Qué es lo que más te gusta de trabajar en Palenque?'. Respuestas: 'El café está brutal', 'Puedo tener reuniones sin ruido de fondo', 'El ambiente inspira'.",
+        cta: "Haz clic en el enlace del perfil y reserva tu espacio para esta semana.",
+        kpi: "Clics al enlace de la biografía / Reservas."
+      },
+      {
+        week: 4,
+        phase: "Etapa 4: Conversión & Oferta Especial",
+        title: "Combo 'Work & Coffee' con 20% OFF",
+        objective: "Incentivar la primera visita con una promoción atractiva de espacio + consumo.",
+        format: "Reel Promo Directa (20s)",
+        bgImage: "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=600&q=80",
+        audio: "Audio enérgico y pegajoso",
+        reelScript: "Tomas apetitosas del menú: tostadas de aguacate, cold brew helado y mesa de trabajo equipada. Texto: 'Cambia de ambiente esta semana. Obtén 4 horas de coworking + Café de especialidad + Snack con 20% OFF'.",
+        cta: "Toca el botón de abajo y reclama tu cupón del 20% OFF exclusivo.",
+        kpi: "Conversiones directas y redención de cupones."
+      },
+      {
+        week: 5,
+        phase: "Etapa 5: Fidelización & Tardeo",
+        title: "Del Coffee Break al Tardeo Caleño",
+        objective: "Promover el consumo recurrente y la transición del horario de trabajo al momento de esparcimiento.",
+        format: "Reel Interactivo / Transición (15s)",
+        bgImage: "https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&w=600&q=80",
+        audio: "Audio viral participativo",
+        reelScript: "Transición divertida: 4:59 PM (laptop cerrándose con prisa) ➡️ 5:00 PM (disfrutando una bebida helada o postre de la casa con amigos). Texto: '¿Eres de Espresso para concentrarte o Cold Brew para el tardeo?'.",
+        cta: "Comenta tu bebida favorita y etiqueta al compañero con quien vendrás hoy.",
+        kpi: "Engagement general y menciones de marca."
+      }
+    ];
+
+    // INICIALIZACIÓN
+    window.onload = function() {
+      renderWeekCards(campaignData);
+      updateReelPreview(1);
+    };
+
+    // Renderizar tarjetas
+    function renderWeekCards(dataList) {
+      const container = document.getElementById('weeks-list-container');
+      container.innerHTML = dataList.map(item => `
+        <div class="week-card">
+          
+          <!-- Card Header -->
+          <div class="card-header">
+            <span class="phase-badge">${item.phase}</span>
+            <span class="week-badge">Semana ${item.week}</span>
+          </div>
+          
+          <!-- Title & Objective -->
+          <div>
+            <h3 class="card-title">${item.title}</h3>
+            <p class="card-objective"><strong style="color: var(--vino-base);">Objetivo Estratégico:</strong> ${item.objective}</p>
+          </div>
+
+          <!-- Format & Audio -->
+          <div class="card-meta-grid">
+            <div class="meta-box">
+              <strong>📹 Formato de Publicación:</strong>
+              <span>${item.format}</span>
+            </div>
+            <div class="meta-box">
+              <strong>🎵 Audio Sugerido:</strong>
+              <span>${item.audio}</span>
+            </div>
+          </div>
+
+          <!-- Script / Concept -->
+          <div class="script-box">
+            <div class="script-title">
+              <i class="fa-solid fa-clapperboard" style="color: var(--vino-light);"></i> Guion / Storyboard del Reel
+            </div>
+            <p class="script-text">"${item.reelScript}"</p>
+          </div>
+
+          <!-- CTA Block -->
+          <div class="cta-block">
+            <div>
+              <span class="cta-label">📣 Call To Action (CTA) Sugerido</span>
+              <p class="cta-text">"${item.cta}"</p>
+            </div>
+            <button onclick="updateReelPreview(${item.week})" class="preview-btn">
+              <i class="fa-solid fa-mobile-screen"></i> Ver Prototipo
+            </button>
+          </div>
+
+          <!-- Metric Footer -->
+          <div class="kpi-footer">
+            <span>🎯 Métrica Principal (KPI): <strong style="color: var(--vino-dark);">${item.kpi}</strong></span>
+          </div>
+
+        </div>
+      `).join('');
+    }
+
+    // Filtrar por semana
+    function filterWeek(weekNum) {
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.classList.remove('active');
+      });
+
+      const activeBtn = document.getElementById(`filter-btn-${weekNum}`);
+      if (activeBtn) {
+        activeBtn.classList.add('active');
+      }
+
+      if (weekNum === 'all') {
+        renderWeekCards(campaignData);
+        updateReelPreview(1);
+      } else {
+        const filtered = campaignData.filter(w => w.week === weekNum);
+        renderWeekCards(filtered);
+        updateReelPreview(weekNum);
+      }
+    }
+
+    // Actualizar Previsualizador del Teléfono
+    function updateReelPreview(weekNum) {
+      const data = campaignData.find(w => w.week === weekNum);
+      if (!data) return;
+
+      document.getElementById('reel-bg').style.backgroundImage = `url('${data.bgImage}')`;
+      document.getElementById('preview-week-tag').innerText = `Semana ${data.week}`;
+      document.getElementById('reel-title-preview').innerText = data.title;
+      document.getElementById('reel-script-preview').innerText = data.reelScript;
+      document.getElementById('reel-cta-preview').innerText = data.cta;
+
+      // Valores decorativos de interacciones
+      document.getElementById('reel-likes').innerText = (data.week * 720 + 350).toLocaleString();
+      document.getElementById('reel-comments').innerText = (data.week * 45 + 18).toLocaleString();
+    }
+  </script>
+</body>
+</html>
